@@ -1,7 +1,6 @@
 import React from 'react';
 import AppBar from '@material-ui/core/AppBar';
 import Button from '@material-ui/core/Button';
-import AccessibilityNewIcon from '@material-ui/icons/AccessibilityNew';
 import Card from '@material-ui/core/Card';
 import CardActions from '@material-ui/core/CardActions';
 import TextField from '@material-ui/core/TextField';
@@ -14,6 +13,7 @@ import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import Link from '@material-ui/core/Link';
+import { green } from '@material-ui/core/colors';
 
 function Copyright() {
   return (
@@ -29,6 +29,12 @@ function Copyright() {
 }
 
 const useStyles = makeStyles(theme => ({
+  appBarTitle: {
+    flexGrow: 1,
+  },
+  appBarButton: {
+    backgroundColor: '#52ab52',
+  },
   icon: {
     marginRight: theme.spacing(2),
   },
@@ -70,10 +76,10 @@ export default function Main() {
       <CssBaseline />
       <AppBar position="relative">
         <Toolbar>
-          <AccessibilityNewIcon className={classes.icon} />
-          <Typography variant="h6" color="inherit" noWrap>
-            ServicesIL
+          <Typography variant="h6" color="inherit" noWrap className={classes.appBarTitle}>
+            שירותים IL
           </Typography>
+          <Button className={classes.appBarButton}>הוסף שירות</Button>
         </Toolbar>
       </AppBar>
       <main>

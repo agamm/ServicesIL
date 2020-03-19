@@ -5,18 +5,30 @@ import App from './App';
 import * as serviceWorker from './serviceWorker';
 import { create } from 'jss';
 import { StylesProvider, jssPreset } from '@material-ui/core/styles';
+import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 import rtl from 'jss-rtl'
+import purple from '@material-ui/core/colors/purple';
+
+
 
 const jss = create({
     plugins: [...jssPreset().plugins, rtl()],
 });
 
+const theme = createMuiTheme({
+    palette: {
+        secondary: purple,
+    },
+});
+
 
 export default function RootComponent() {
     return (
-        <StylesProvider jss={jss}>
-            <App />
-        </StylesProvider>
+        <MuiThemeProvider theme={theme}>
+            <StylesProvider jss={jss}>
+                <App />
+            </StylesProvider>
+        </MuiThemeProvider>
     );
 }
 
