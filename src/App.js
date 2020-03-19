@@ -18,7 +18,7 @@ import Link from '@material-ui/core/Link';
 function Copyright() {
   return (
     <Typography variant="body2" color="textSecondary" align="center">
-      {'Copyright © '}
+      {'כל הזכויות שמורות © '}
       <Link color="inherit" href="https://servicesil.co.il/">
         ServicesIl
       </Link>{' '}
@@ -131,11 +131,13 @@ export default function Main() {
       </main>
       {/* Footer */}
       <footer className={classes.footer}>
-        <Typography variant="h6" align="center" gutterBottom>
-          Footer
-        </Typography>
         <Typography variant="subtitle1" align="center" color="textSecondary" component="p">
-          Something here to give the footer a purpose!
+          <Link href="#" onClick={null}>
+            הוספת שירות חדש
+          </Link>&nbsp;|&nbsp;
+          <Link href="#" onClick={null}>
+            אודותינו
+          </Link>
         </Typography>
         <Copyright />
       </footer>
