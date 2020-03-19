@@ -1,9 +1,10 @@
 import React from 'react';
 import AppBar from '@material-ui/core/AppBar';
 import Button from '@material-ui/core/Button';
-import CameraIcon from '@material-ui/icons/PhotoCamera';
+import AccessibilityNewIcon from '@material-ui/icons/AccessibilityNew';
 import Card from '@material-ui/core/Card';
 import CardActions from '@material-ui/core/CardActions';
+import TextField from '@material-ui/core/TextField';
 import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -18,8 +19,8 @@ function Copyright() {
   return (
     <Typography variant="body2" color="textSecondary" align="center">
       {'Copyright © '}
-      <Link color="inherit" href="https://material-ui.com/">
-        Your Website
+      <Link color="inherit" href="https://servicesil.co.il/">
+        ServicesIl
       </Link>{' '}
       {new Date().getFullYear()}
       {'.'}
@@ -61,7 +62,7 @@ const useStyles = makeStyles(theme => ({
 
 const cards = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 
-export default function Album() {
+export default function Main() {
   const classes = useStyles();
 
   return (
@@ -69,9 +70,9 @@ export default function Album() {
       <CssBaseline />
       <AppBar position="relative">
         <Toolbar>
-          <CameraIcon className={classes.icon} />
+          <AccessibilityNewIcon className={classes.icon} />
           <Typography variant="h6" color="inherit" noWrap>
-            Album layout
+            ServicesIL
           </Typography>
         </Toolbar>
       </AppBar>
@@ -80,24 +81,16 @@ export default function Album() {
         <div className={classes.heroContent}>
           <Container maxWidth="sm">
             <Typography component="h1" variant="h2" align="center" color="textPrimary" gutterBottom>
-              Album layout
+              שירותים IL
             </Typography>
             <Typography variant="h5" align="center" color="textSecondary" paragraph>
-              Something short and leading about the collection below—its contents, the creator, etc.
-              Make it short and sweet, but not too short so folks don&apos;t simply skip over it
-              entirely.
+              כאן יהיה רשום כל מה שהאתר הזה עושה, ולמה כדאי לפרסם פה.
+
             </Typography>
             <div className={classes.heroButtons}>
               <Grid container spacing={2} justify="center">
                 <Grid item>
-                  <Button variant="contained" color="primary">
-                    Main call to action
-                  </Button>
-                </Grid>
-                <Grid item>
-                  <Button variant="outlined" color="primary">
-                    Secondary action
-                  </Button>
+                  <TextField id="outlined-search" label="חפשו כאן" type="search" variant="outlined" />
                 </Grid>
               </Grid>
             </div>
