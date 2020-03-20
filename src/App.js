@@ -108,7 +108,7 @@ export default function Main() {
               שירותים IL
             </Typography>
             <Typography variant="h5" align="center" color="textSecondary" paragraph>
-              כאן יהיה רשום כל מה שהאתר הזה עושה, ולמה כדאי לפרסם פה.
+              שירותים דיגיטליים בהישג יד
 
             </Typography>
             <div className={classes.heroButtons}>
