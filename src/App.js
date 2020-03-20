@@ -87,7 +87,7 @@ export default function Main() {
         console.log(response)
         setData(response.items)
       }).catch(console.error)
-    })
+    }, [])
 
 
   const handleInputChange = (e) => {
@@ -101,6 +101,10 @@ export default function Main() {
     }).catch(console.error)
   }
 
+  const addService = () => {
+    window.location.href = "https://airtable.com/shrD72XirW6iiXtfE";
+  }
+
 
   return (
     <React.Fragment>
@@ -110,7 +114,7 @@ export default function Main() {
           <Typography variant="h6" color="inherit" noWrap className={classes.appBarTitle}>
             שירותים IL
           </Typography>
-          <Button className={classes.appBarButton}>הוסף שירות</Button>
+          <Button className={classes.appBarButton} onClick={addService}>הוסף שירות</Button>
         </Toolbar>
       </AppBar>
       <main>
@@ -142,7 +146,7 @@ export default function Main() {
                   <Card className={classes.card}>
                     <CardMedia
                       className={classes.cardMedia}
-                      image={item.fields.image && item.fields.image.fields.file.url}
+                      image={item.fields.image && item.fields.image.fields && item.fields.image.fields.file.url}
                       title="Image title"
                     />
                     <CardContent className={classes.cardContent}>
