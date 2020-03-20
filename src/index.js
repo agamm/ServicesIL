@@ -8,7 +8,7 @@ import { StylesProvider, jssPreset } from '@material-ui/core/styles';
 import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 import rtl from 'jss-rtl'
 import purple from '@material-ui/core/colors/purple';
-
+import { BrowserRouter } from 'react-router-dom'
 
 
 const jss = create({
@@ -24,11 +24,13 @@ const theme = createMuiTheme({
 
 export default function RootComponent() {
     return (
-        <MuiThemeProvider theme={theme}>
-            <StylesProvider jss={jss}>
-                <App />
-            </StylesProvider>
-        </MuiThemeProvider>
+        <BrowserRouter>
+            <MuiThemeProvider theme={theme}>
+                <StylesProvider jss={jss}>
+                    <App />
+                </StylesProvider>
+            </MuiThemeProvider>
+        </BrowserRouter>
     );
 }
 

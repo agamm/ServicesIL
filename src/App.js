@@ -1,11 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import AppBar from '@material-ui/core/AppBar';
 import Button from '@material-ui/core/Button';
-import Card from '@material-ui/core/Card';
-import CardActions from '@material-ui/core/CardActions';
 import TextField from '@material-ui/core/TextField';
-import CardContent from '@material-ui/core/CardContent';
-import CardMedia from '@material-ui/core/CardMedia';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Grid from '@material-ui/core/Grid';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -13,9 +9,11 @@ import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import Link from '@material-ui/core/Link';
-import { green } from '@material-ui/core/colors';
-
+import Results from './Results.js';
+import { Route } from 'react-router-dom';
+import Service from './Service.js';
 var contentful = require('contentful');
+
 
 var client = contentful.createClient({
   space: '50rrjxv2h4p8',
@@ -51,21 +49,6 @@ const useStyles = makeStyles(theme => ({
   },
   heroButtons: {
     marginTop: theme.spacing(4),
-  },
-  cardGrid: {
-    paddingTop: theme.spacing(8),
-    paddingBottom: theme.spacing(8),
-  },
-  card: {
-    height: '100%',
-    display: 'flex',
-    flexDirection: 'column',
-  },
-  cardMedia: {
-    paddingTop: '56.25%', // 16:9
-  },
-  cardContent: {
-    flexGrow: 1,
   },
   footer: {
     backgroundColor: theme.palette.background.paper,
@@ -131,43 +114,16 @@ export default function Main() {
             <div className={classes.heroButtons}>
               <Grid container spacing={2} justify="center">
                 <Grid item>
-                  <TextField id="outlined-search" label="חפשו כאן" type="search" variant="outlined" onChange={handleInputChange}/>
+                  <TextField id="outlined-search" label="חפשו כאן" type="search" variant="outlined" onChange={handleInputChange} />
                 </Grid>
               </Grid>
             </div>
           </Container>
         </div>
-        <Container className={classes.cardGrid} maxWidth="md">
-          {/* End hero unit */}
-          <Grid container spacing={4}>
-            {
-              data.map(item => (
-                <Grid item key={item} xs={12} sm={3} md={3}>
-                  <Card className={classes.card}>
-                    <CardMedia
-                      className={classes.cardMedia}
-                      image={item.fields.image && item.fields.image.fields && item.fields.image.fields.file.url}
-                      title="Image title"
-                    />
-                    <CardContent className={classes.cardContent}>
-                      <Typography gutterBottom variant="h5" component="h2">
-                        {item.fields.serviceName}
-                      </Typography>
-                      <Typography>
-                        {item.fields.description}
-                      </Typography>
-                    </CardContent>
-                    <CardActions>
-                      <Button size="small" color="primary">
-                        כנס/י
-              </Button>
-                    </CardActions>
-                  </Card>
-                </Grid>
-              ))
-            }
-          </Grid>
-        </Container>
+        <div className={classes.mainContainer}>
+          <Route path="/" exact render={() => <Results data={data}></Results>} />
+          <Route path="/service/:id" component={Service} />
+        </div>
       </main>
       {/* Footer */}
       <footer className={classes.footer}>
