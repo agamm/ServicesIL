@@ -15,15 +15,16 @@ import ShareIcon from '@material-ui/icons/Share';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
 import { Container } from '@material-ui/core';
 var GeoPattern = require('geopattern');
-var pattern = GeoPattern.generate('GitHub');
+var pattern = GeoPattern.generate('GitHub' + ('' + Math.random()));
 
 const useStyles = makeStyles(theme => ({
     root: {
         maxWidth: 700,
     },
     main: {
-        maxWidth: 700,
+        maxWidth: '100%',
         padding: '1em',
+        paddingRight: '500px',
         backgroundImage: pattern.toDataUrl(),
     },
     media: {
