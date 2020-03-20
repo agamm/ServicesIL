@@ -20,6 +20,9 @@ const useStyles = makeStyles(theme => ({
     root: {
         maxWidth: 700,
     },
+    main: {
+        maxWidth: 700,
+    },
     media: {
         height: 0,
         paddingTop: '56.25%', // 16:9
@@ -50,7 +53,7 @@ export default function Service(props) {
 
 
     return (
-        <Container>
+        <Container className={classes.main}>
             <Card className={classes.root}>
                 <CardHeader
                     avatar={
@@ -78,9 +81,6 @@ export default function Service(props) {
             </Typography>
                 </CardContent>
                 <CardActions disableSpacing>
-                    <IconButton aria-label="add to favorites">
-                        <FavoriteIcon />
-                    </IconButton>
                     <IconButton aria-label="share">
                         <ShareIcon />
                     </IconButton>
