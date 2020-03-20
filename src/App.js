@@ -76,17 +76,31 @@ const useStyles = makeStyles(theme => ({
 export default function Main() {
   const classes = useStyles();
   const [data, setData] = useState([]);
+  const [input, setInput] = useState("");
 
   useEffect(
-    function() {
+    function () {
 
       client.getEntries({
-        'query': ""
+        'query': input
       }).then(function (response) {
         console.log(response)
         setData(response.items)
       }).catch(console.error)
     })
+
+
+  const handleInputChange = (e) => {
+    setInput(e.currentTarget.value)
+
+    client.getEntries({
+      'query': e.currentTarget.value
+    }).then(function (response) {
+      console.log(response)
+      setData(response.items)
+    }).catch(console.error)
+  }
+
 
   return (
     <React.Fragment>
@@ -113,7 +127,7 @@ export default function Main() {
             <div className={classes.heroButtons}>
               <Grid container spacing={2} justify="center">
                 <Grid item>
-                  <TextField id="outlined-search" label="חפשו כאן" type="search" variant="outlined" />
+                  <TextField id="outlined-search" label="חפשו כאן" type="search" variant="outlined" onChange={handleInputChange}/>
                 </Grid>
               </Grid>
             </div>
@@ -134,10 +148,10 @@ export default function Main() {
                     <CardContent className={classes.cardContent}>
                       <Typography gutterBottom variant="h5" component="h2">
                         {item.fields.serviceName}
-              </Typography>
+                      </Typography>
                       <Typography>
                         {item.fields.description}
-              </Typography>
+                      </Typography>
                     </CardContent>
                     <CardActions>
                       <Button size="small" color="primary">
