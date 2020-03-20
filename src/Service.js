@@ -112,7 +112,7 @@ export default function Service(props) {
               </Typography>
                           {item.fields.phoneNumber && <Typography paragraph>
                               טלפון: &nbsp;
-                                {item.fields.phoneNumber}
+                                0{item.fields.phoneNumber}
               </Typography>}
                           {item.fields.openingTime && <Typography paragraph>
                                 שעת פתיחה:&nbsp;
@@ -122,6 +122,15 @@ export default function Service(props) {
                                 שעת סגירה:&nbsp;
                               {item.fields.closingTime}
                             </Typography>}
+
+                          {item.fields.isFree && <Typography>
+                              {item.fields.isFree && "מחיר: חינם!"}
+                            </Typography>}
+
+                          {!item.fields.isFree && <Typography>
+                            מחיר:&nbsp;
+                            {!item.fields.isFree && item.fields.priceRange}
+                          </Typography>}
                         </CardContent>
                     </Collapse>
                 </Card>
