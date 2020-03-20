@@ -95,7 +95,7 @@ export default function Main() {
       <AppBar position="relative">
         <Toolbar>
           <Typography variant="h6" color="inherit" noWrap className={classes.appBarTitle}>
-            שירותים IL
+            DigiServe
           </Typography>
           <Button className={classes.appBarButton} onClick={addService}>הוסף שירות</Button>
         </Toolbar>
@@ -105,7 +105,7 @@ export default function Main() {
         <div className={classes.heroContent}>
           <Container maxWidth="sm">
             <Typography component="h1" variant="h2" align="center" color="textPrimary" gutterBottom>
-              שירותים IL
+              DigiServe
             </Typography>
             <Typography variant="h5" align="center" color="textSecondary" paragraph>
               שירותים דיגיטליים בהישג יד
