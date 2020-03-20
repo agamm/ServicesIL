@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import AppBar from '@material-ui/core/AppBar';
 import Button from '@material-ui/core/Button';
 import AccessibilityNewIcon from '@material-ui/icons/AccessibilityNew';
@@ -14,6 +14,13 @@ import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import Link from '@material-ui/core/Link';
+
+var contentful = require('contentful');
+
+var client = contentful.createClient({
+  space: '50rrjxv2h4p8',
+  accessToken: '0S-idIoakT5qS6PII5JyClZnJ29-RIiLBP27vslWs80'
+})
 
 function Copyright() {
   return (
@@ -60,10 +67,20 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-const cards = [1, 2, 3, 4, 5, 6, 7, 8, 9];
-
 export default function Main() {
   const classes = useStyles();
+  const [data, setData] = useState([]);
+
+  useEffect(
+    function() {
+
+      client.getEntries({
+        'query': ""
+      }).then(function (response) {
+        console.log(response)
+        setData(response.items)
+      }).catch(console.error)
+    })
 
   return (
     <React.Fragment>
@@ -99,30 +116,32 @@ export default function Main() {
         <Container className={classes.cardGrid} maxWidth="md">
           {/* End hero unit */}
           <Grid container spacing={4}>
-            {cards.map(card => (
-              <Grid item key={card} xs={12} sm={3} md={3}>
-                <Card className={classes.card}>
-                  <CardMedia
-                    className={classes.cardMedia}
-                    image="https://source.unsplash.com/random"
-                    title="Image title"
-                  />
-                  <CardContent className={classes.cardContent}>
-                    <Typography gutterBottom variant="h5" component="h2">
-                      כותרת שירות
-                    </Typography>
-                    <Typography>
-                      תיאור שירות...
-                    </Typography>
-                  </CardContent>
-                  <CardActions>
-                    <Button size="small" color="primary">
-                      כנס/י
-                    </Button>
-                  </CardActions>
-                </Card>
-              </Grid>
-            ))}
+            {
+              data.map(item => (
+                <Grid item key={item} xs={12} sm={3} md={3}>
+                  <Card className={classes.card}>
+                    <CardMedia
+                      className={classes.cardMedia}
+                      image={item.fields.image && item.fields.image.fields.file.url}
+                      title="Image title"
+                    />
+                    <CardContent className={classes.cardContent}>
+                      <Typography gutterBottom variant="h5" component="h2">
+                        {item.fields.serviceName}
+              </Typography>
+                      <Typography>
+                        {item.fields.description}
+              </Typography>
+                    </CardContent>
+                    <CardActions>
+                      <Button size="small" color="primary">
+                        כנס/י
+              </Button>
+                    </CardActions>
+                  </Card>
+                </Grid>
+              ))
+            }
           </Grid>
         </Container>
       </main>
