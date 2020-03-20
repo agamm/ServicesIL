@@ -82,7 +82,7 @@ export default function Main() {
     function () {
 
       client.getEntries({
-        'query': input
+        'query': ''
       }).then(function (response) {
         console.log(response)
         setData(response.items)
