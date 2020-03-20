@@ -22,6 +22,7 @@ const useStyles = makeStyles(theme => ({
     },
     main: {
         maxWidth: 700,
+        padding: '1em',
     },
     media: {
         height: 0,
